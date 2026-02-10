@@ -1,0 +1,12 @@
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/bin/Debug/net9.0/MovieClientFeaturesApi.Core.deps.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/bin/Debug/net9.0/MovieClientFeaturesApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/bin/Debug/net9.0/MovieClientFeaturesApi.Core.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.AssemblyInfoInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.AssemblyInfo.cs
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.csproj.CoreCompileInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/refint/MovieClientFeaturesApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/ref/MovieClientFeaturesApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.csproj.AssemblyReference.cache

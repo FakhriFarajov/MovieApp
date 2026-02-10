@@ -1,0 +1,17 @@
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Application.deps.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Application.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Core.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/bin/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.csproj.AssemblyReference.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.AssemblyInfoInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.AssemblyInfo.cs
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.csproj.CoreCompileInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdm.0B5C37EC.Up2Date
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/refint/MovieAdminFeaturesApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/MovieAdminFeaturesApi.Application.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Application/obj/Debug/net9.0/ref/MovieAdminFeaturesApi.Application.dll

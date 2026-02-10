@@ -1,0 +1,17 @@
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.csproj.AssemblyReference.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.AssemblyInfoInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.AssemblyInfo.cs
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/bin/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.deps.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/bin/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.runtimeconfig.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/bin/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/bin/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/bin/Debug/net9.0/MovieAdminFeaturesApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/bin/Debug/net9.0/MovieAdminFeaturesApi.Core.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdm.6C3730D3.Up2Date
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/refint/MovieAdminFeaturesApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieAdminFeaturesApi.Infrastructure.genruntimeconfig.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAdminFeaturesApi/Infrastructure/obj/Debug/net9.0/ref/MovieAdminFeaturesApi.Infrastructure.dll

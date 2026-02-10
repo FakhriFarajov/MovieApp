@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Confirmation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px 0;
+            color: #333333;
+        }
+
+        .container {
+            max-width: 600px;
+            background: #ffffff;
+            margin: auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: oklch(27.8% 0.033 256.848);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555555;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: oklch(27.8% 0.033 256.848);
+            color: #ffffff !important;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 25px auto;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #888888;
+            margin-top: 30px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Hello, {User}!</h2>
+
+    <p>Thanks for registering!
+        Please, confirm your email, by pressing the following button:</p>
+
+    <div style="text-align: center;">
+        <a class="button" href="{ConfirmationLink}">Confirm Email</a>
+    </div>
+
+    <div class="footer">
+        If you haven't requested teh registration, just ignore this mail.<br>
+        This is automatic mail — you shouldn't respond to it.
+    </div>
+</div>
+</body>
+</html>

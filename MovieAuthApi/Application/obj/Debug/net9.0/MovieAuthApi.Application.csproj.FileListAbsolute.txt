@@ -1,0 +1,17 @@
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Application.deps.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Application.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Core.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/bin/Debug/net9.0/MovieAuthApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.csproj.AssemblyReference.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.AssemblyInfoInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.AssemblyInfo.cs
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.csproj.CoreCompileInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAut.5961F18A.Up2Date
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/refint/MovieAuthApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/ref/MovieAuthApi.Application.dll

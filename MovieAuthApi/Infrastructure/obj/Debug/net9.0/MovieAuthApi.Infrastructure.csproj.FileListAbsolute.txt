@@ -1,0 +1,17 @@
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/bin/Debug/net9.0/MovieAuthApi.Infrastructure.deps.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/bin/Debug/net9.0/MovieAuthApi.Infrastructure.runtimeconfig.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/bin/Debug/net9.0/MovieAuthApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/bin/Debug/net9.0/MovieAuthApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/bin/Debug/net9.0/MovieAuthApi.Core.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/bin/Debug/net9.0/MovieAuthApi.Core.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.csproj.AssemblyReference.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.AssemblyInfoInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.AssemblyInfo.cs
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAut.6BE83518.Up2Date
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/refint/MovieAuthApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/MovieAuthApi.Infrastructure.genruntimeconfig.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Infrastructure/obj/Debug/net9.0/ref/MovieAuthApi.Infrastructure.dll

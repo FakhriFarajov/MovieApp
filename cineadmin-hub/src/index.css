@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 43 96% 56%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 20% 20%;
+
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 20% 10%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 43 96% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 20% 98%;
+    --sidebar-foreground: 220 20% 25%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 15% 94%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 43 96% 56%;
+
+    --cinema-gold: 43 96% 56%;
+    --cinema-gold-dark: 38 92% 45%;
+    --cinema-red: 0 72% 51%;
+    --cinema-screen: 200 80% 60%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 220 10% 95%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 220 10% 95%;
+
+    --popover: 220 25% 11%;
+    --popover-foreground: 220 10% 95%;
+
+    --primary: 43 96% 56%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 10% 90%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 20% 10%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 43 96% 56%;
+
+    --sidebar-background: 220 25% 6%;
+    --sidebar-foreground: 220 10% 85%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 25% 12%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 20% 15%;
+    --sidebar-ring: 43 96% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .cinema-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--cinema-gold-dark)) 100%);
+  }
+
+  .cinema-card {
+    @apply bg-card border border-border rounded-xl shadow-lg;
+  }
+
+  .cinema-seat {
+    @apply w-7 h-7 rounded-t-lg transition-all duration-200 cursor-pointer;
+  }
+
+  .cinema-seat-available {
+    @apply bg-secondary hover:bg-primary/20 border border-border;
+  }
+
+  .cinema-seat-vip {
+    @apply bg-primary/30 hover:bg-primary/50 border border-primary/50;
+  }
+
+  .cinema-screen {
+    @apply w-full h-3 rounded-sm;
+    background: linear-gradient(180deg, hsl(var(--cinema-screen)) 0%, hsl(var(--cinema-screen) / 0.3) 100%);
+    box-shadow: 0 0 30px hsl(var(--cinema-screen) / 0.5);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-card/80;
+  }
+
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-active {
+    @apply bg-success/20 text-success;
+  }
+
+  .status-banned {
+    @apply bg-destructive/20 text-destructive;
+  }
+
+  .hall-type-standard {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .hall-type-vip {
+    @apply bg-primary/20 text-primary;
+  }
+
+  .hall-type-imax {
+    @apply bg-blue-500/20 text-blue-400;
+  }
+
+  .hall-type-dolby {
+    @apply bg-purple-500/20 text-purple-400;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--cinema-gold-dark)) 100%);
+  }
+}

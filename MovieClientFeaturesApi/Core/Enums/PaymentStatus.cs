@@ -4,6 +4,7 @@ namespace MovieClientFeaturesApi.Core.Enums
     public enum PaymentStatus
     {
         Pending,
+        Paid,
         Completed,
         Failed,
         Refunded

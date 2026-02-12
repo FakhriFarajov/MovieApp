@@ -182,3 +182,5 @@
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/bin/Debug/net9.0/MovieClientFeaturesApi.Application.pdb
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/bin/Debug/net9.0/MovieClientFeaturesApi.Core.pdb
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/bin/Debug/net9.0/MovieClientFeaturesApi.Infrastructure.pdb
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/obj/Debug/net9.0/MovieClientFeaturesApi.Presentation.sourcelink.json
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/bin/Debug/net9.0/QRCoder.dll

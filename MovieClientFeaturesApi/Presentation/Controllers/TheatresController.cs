@@ -7,18 +7,17 @@ namespace MovieClientFeaturesApi.Presentation.Controllers;
 [Route("api/[controller]")]
 public class TheatresController : ControllerBase
 {
-    private readonly IMovieService _movieService;
+    private readonly ITheatreService _theatreService;
 
-    public TheatresController(IMovieService movieService)
+    public TheatresController(ITheatreService theatreService)
     {
-        _movieService = movieService;
+        _theatreService = theatreService;
     }
 
-    [HttpGet]
+    [HttpGet("getAll")]
     public async Task<IActionResult> GetAll()
     {
-        var theatres = await _movieService.GetAllTheatresAsync();
+        var theatres = await _theatreService.GetAllTheatresAsync();
         return Ok(theatres);
     }
 }
-

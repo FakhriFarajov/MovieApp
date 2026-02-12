@@ -15,3 +15,4 @@
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieClientFeaturesApi.Infrastructure.pdb
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieClientFeaturesApi.Infrastructure.genruntimeconfig.cache
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Infrastructure/obj/Debug/net9.0/ref/MovieClientFeaturesApi.Infrastructure.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Infrastructure/obj/Debug/net9.0/MovieClientFeaturesApi.Infrastructure.sourcelink.json

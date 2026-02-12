@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieClientFeaturesApi.Application.Services.Client.Interfaces;
-using MovieClientFeaturesApi.Core.DTOs.WatchlistDtos.Request;
+using MovieClientFeaturesApi.Application.Services.Interfaces;
+using MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response;
 using MovieClientFeaturesApi.Core.DTOs.WatchlistDtos.Response;
 using MovieClientFeaturesApi.Core.Models;
 using MovieClientFeaturesApi.Infrastructure.Context;
@@ -10,76 +11,43 @@ namespace MovieClientFeaturesApi.Application.Services.Client.Classes;
 public class BookmarkService : IBookmarkService
 {
     private readonly MovieApiDbContext _db;
-    private readonly MovieClientFeaturesApi.Application.Services.Interfaces.IImageService _imageService;
+    private readonly IImageService _imageService;
 
-    public BookmarkService(MovieApiDbContext db, MovieClientFeaturesApi.Application.Services.Interfaces.IImageService imageService)
+    public BookmarkService(MovieApiDbContext db, IImageService imageService)
     {
         _db = db;
         _imageService = imageService;
     }
 
-    public async Task<BookmarkResponseDTO> AddAsync(string clientId, BookmarkCreateRequestDTO dto)
+    public async Task<bool> AddAsync(string clientId, string movieId)
     {
+        // clientId is expected to be the client_profile_id from token
+        if (string.IsNullOrWhiteSpace(clientId)) throw new ArgumentException("clientId is required");
+
         // ensure client exists
         var client = await _db.Clients.FindAsync(clientId);
         if (client == null) throw new KeyNotFoundException("Client not found");
 
         // prevent duplicate bookmarks for same movie
-        var exists = await _db.WatchlistItems.AnyAsync(w => w.ClientId == clientId && w.MovieId == dto.MovieId);
+        var exists = await _db.WatchlistItems.AnyAsync(w => w.ClientId == clientId && w.MovieId == movieId);
         if (exists) throw new InvalidOperationException("Bookmark already exists");
 
         // ensure movie exists
-        var movieExists = await _db.Movies.AsNoTracking().AnyAsync(m => m.Id == dto.MovieId);
+        var movieExists = await _db.Movies.AsNoTracking().AnyAsync(m => m.Id == movieId);
         if (!movieExists) throw new KeyNotFoundException("Movie not found");
 
-        // at this point both client and movie exist - create bookmark
-        var item = new WatchlistItem { ClientId = clientId, MovieId = dto.MovieId };
+        // create bookmark
+        var item = new WatchlistItem { ClientId = clientId, MovieId = movieId };
         _db.WatchlistItems.Add(item);
         await _db.SaveChangesAsync();
 
-        // Build enriched DTO
-        var movie = await _db.Movies.Include(m => m.Translations).AsNoTracking().FirstOrDefaultAsync(m => m.Id == dto.MovieId);
-        MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response.MovieResponseDTO? movieDto = null;
-        if (movie != null)
-        {
-            var posterUrl = string.IsNullOrWhiteSpace(movie.PosterPath) ? string.Empty : await _imageService.GetImageUrlAsync(movie.PosterPath);
-            var backdropUrl = string.IsNullOrWhiteSpace(movie.BackdropPath) ? string.Empty : await _imageService.GetImageUrlAsync(movie.BackdropPath);
-            var translations = movie.Translations.Select(tr => new MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response.MovieTranslationResponseDTO(tr.Language, tr.Title, tr.Overview));
-            // This is a bookmarked item, so IsInBookmark = true
-            movieDto = new MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response.MovieResponseDTO(
-                movie.Id,
-                movie.OriginalTitle,
-                movie.Overview,
-                backdropUrl.Length > 0 ? backdropUrl : movie.BackdropPath,
-                posterUrl.Length > 0 ? posterUrl : movie.PosterPath,
-                movie.ReleaseDate,
-                movie.Duration,
-                movie.AgeRestriction,
-                movie.GenreIds,
-                movie.Video,
-                movie.VideoUrl,
-                true,
-                movie.IsForAdult,
-                movie.OriginalLanguage,
-                movie.Languages,
-                movie.Actors,
-                movie.Director,
-                movie.HomePageUrl,
-                movie.AverageRating,
-                movie.Revenue,
-                movie.Budget,
-                movie.Status,
-                movie.TagLine,
-                translations
-            );
-        }
-
-        return new BookmarkResponseDTO(item.Id, item.MovieId, item.ClientId, movieDto);
+        return true;
     }
 
-    public async Task<bool> RemoveAsync(string clientId, string bookmarkId)
+    public async Task<bool> RemoveAsync(string clientId, string movieId)
     {
-        var item = await _db.WatchlistItems.FirstOrDefaultAsync(w => w.Id == bookmarkId && w.ClientId == clientId);
+        if (string.IsNullOrWhiteSpace(clientId) || string.IsNullOrWhiteSpace(movieId)) return false;
+        var item = await _db.WatchlistItems.FirstOrDefaultAsync(w => w.ClientId == clientId && w.MovieId == movieId);
         if (item == null) return false;
         _db.WatchlistItems.Remove(item);
         await _db.SaveChangesAsync();
@@ -96,14 +64,13 @@ public class BookmarkService : IBookmarkService
         foreach (var i in items)
         {
             var movie = movies.FirstOrDefault(m => m.Id == i.MovieId);
-            MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response.MovieResponseDTO? movieDto = null;
+            MovieResponseDTO? movieDto = null;
             if (movie != null)
             {
                 var posterUrl = string.IsNullOrWhiteSpace(movie.PosterPath) ? string.Empty : await _imageService.GetImageUrlAsync(movie.PosterPath);
                 var backdropUrl = string.IsNullOrWhiteSpace(movie.BackdropPath) ? string.Empty : await _imageService.GetImageUrlAsync(movie.BackdropPath);
-                var translations = movie.Translations.Select(tr => new MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response.MovieTranslationResponseDTO(tr.Language, tr.Title, tr.Overview));
-                // Bookmarked item -> IsInBookmark = true
-                movieDto = new MovieClientFeaturesApi.Core.DTOs.MovieDtos.Response.MovieResponseDTO(
+                var translations = movie.Translations.Select(tr => new MovieTranslationResponseDTO(tr.Language, tr.Title, tr.Overview));
+                movieDto = new MovieResponseDTO(
                     movie.Id,
                     movie.OriginalTitle,
                     movie.Overview,

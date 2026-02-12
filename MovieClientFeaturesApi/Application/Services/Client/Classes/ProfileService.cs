@@ -5,40 +5,49 @@ using MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response;
 using MovieClientFeaturesApi.Core.DTOs.WatchlistDtos.Request;
 using MovieClientFeaturesApi.Core.DTOs.WatchlistDtos.Response;
 using MovieClientFeaturesApi.Infrastructure.Context;
+using MovieClientFeaturesApi.Application.Services.Interfaces;
 
 namespace MovieClientFeaturesApi.Application.Services.Client.Classes;
 
 public class ProfileService : IProfileService
 {
     private readonly MovieApiDbContext _db;
+    private readonly IImageService _imageService;
 
-    public ProfileService(MovieApiDbContext db)
+    public ProfileService(MovieApiDbContext db, IImageService imageService)
     {
         _db = db;
+        _imageService = imageService;
     }
 
-    public async Task<MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<ClientProfileResponseDTO>> GetProfile(string clientId)
+
+    public async Task<TypedResult<ClientProfileResponseDTO>> GetProfile(string clientId)
     {
-        var client = await _db.Clients.Include(c => c.User).AsNoTracking().FirstOrDefaultAsync(c => c.Id == clientId);
-        if (client == null) return MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<ClientProfileResponseDTO>.Error("Client not found", 404);
+        // Ensure User navigation is loaded to avoid null refs
+        var client = await _db.Clients.AsNoTracking().Include(c => c.User).FirstOrDefaultAsync(c => c.Id == clientId);
+        if (client == null) return TypedResult<ClientProfileResponseDTO>.Error("Client not found", 404);
+        if (client.User == null) return TypedResult<ClientProfileResponseDTO>.Error("Linked user not found for client", 500);
 
         var profile = new ClientProfileResponseDTO
         {
             Id = client.Id,
-            Name = client.User.Name,
-            Surname = client.User.Surname,
-            PhoneNumber = client.User.PhoneNumber,
-            Email = client.User.Email,
-            DateOfBirth = client.DateOfBirth
+            Name = client.User.Name ?? string.Empty,
+            Surname = client.User.Surname ?? string.Empty,
+            PhoneNumber = client.User.PhoneNumber ?? string.Empty,
+            Email = client.User.Email ?? string.Empty,
+            DateOfBirth = client.DateOfBirth == DateTime.MinValue ? null : client.DateOfBirth,
+            ProfileImage = string.IsNullOrWhiteSpace(client.User.ProfileImage) ? string.Empty : await _imageService.GetImageUrlAsync(client.User.ProfileImage)
         };
 
-        return MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<ClientProfileResponseDTO>.Success(profile, "Profile fetched");
+        return TypedResult<ClientProfileResponseDTO>.Success(profile, "Profile fetched");
     }
 
-    public async Task<MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<ClientProfileResponseDTO>> UpdateProfile(string clientId, ClientProfileUpdateRequestDTO dto)
+    public async Task<TypedResult<ClientProfileResponseDTO>> UpdateProfile(string clientId, ClientProfileUpdateRequestDTO dto)
     {
+        // Load user navigation so we can update user fields
         var client = await _db.Clients.Include(c => c.User).FirstOrDefaultAsync(c => c.Id == clientId);
-        if (client == null) return MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<ClientProfileResponseDTO>.Error("Client not found", 404);
+        if (client == null) return TypedResult<ClientProfileResponseDTO>.Error("Client not found", 404);
+        if (client.User == null) return TypedResult<ClientProfileResponseDTO>.Error("Linked user not found for client", 500);
 
         // Update allowed fields on underlying User and Client profile
         if (!string.IsNullOrWhiteSpace(dto.Name)) client.User.Name = dto.Name;
@@ -47,28 +56,25 @@ public class ProfileService : IProfileService
         if (!string.IsNullOrWhiteSpace(dto.Email)) client.User.Email = dto.Email;
         if (dto.DateOfBirth.HasValue) client.DateOfBirth = dto.DateOfBirth.Value;
 
+        // If DTO contains ProfileImageObjectName, set it on user
+        if (!string.IsNullOrWhiteSpace(dto.ProfileImageObjectName))
+        {
+            client.User.ProfileImage = dto.ProfileImageObjectName;
+        }
+
         await _db.SaveChangesAsync();
 
         var profile = new ClientProfileResponseDTO
         {
             Id = client.Id,
-            Name = client.User.Name,
-            Surname = client.User.Surname,
-            PhoneNumber = client.User.PhoneNumber,
-            Email = client.User.Email,
-            DateOfBirth = client.DateOfBirth
+            Name = client.User.Name ?? string.Empty,
+            Surname = client.User.Surname ?? string.Empty,
+            PhoneNumber = client.User.PhoneNumber ?? string.Empty,
+            Email = client.User.Email ?? string.Empty,
+            DateOfBirth = client.DateOfBirth == DateTime.MinValue ? null : client.DateOfBirth,
+            ProfileImage = string.IsNullOrWhiteSpace(client.User.ProfileImage) ? string.Empty : await _imageService.GetImageUrlAsync(client.User.ProfileImage)
         };
 
-        return MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<ClientProfileResponseDTO>.Success(profile, "Profile updated");
-    }
-
-    public async Task<MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<IEnumerable<BookmarkResponseDTO>>> GetForClientAsync(string clientId)
-    {
-        var client = await _db.Clients.FindAsync(clientId);
-        if (client == null) return MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<IEnumerable<BookmarkResponseDTO>>.Error("Client not found", 404, null);
-
-        var items = await _db.WatchlistItems.AsNoTracking().Where(w => w.ClientId == clientId).ToListAsync();
-        var list = items.Select(i => new BookmarkResponseDTO(i.Id, i.MovieId, i.ClientId));
-        return MovieClientFeaturesApi.Core.DTOs.ClientDtos.Response.TypedResult<IEnumerable<BookmarkResponseDTO>>.Success(list, "Bookmarks fetched");
+        return TypedResult<ClientProfileResponseDTO>.Success(profile, "Profile updated");
     }
 }

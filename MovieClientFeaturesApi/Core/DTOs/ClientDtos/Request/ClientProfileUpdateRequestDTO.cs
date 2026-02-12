@@ -7,5 +7,5 @@ public class ClientProfileUpdateRequestDTO
     public string? PhoneNumber { get; set; }
     public string? Email { get; set; }
     public DateTime? DateOfBirth { get; set; }
+    public string? ProfileImageObjectName { get; set; } // set by controller after uploading file
 }
-

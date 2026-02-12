@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "D8+nqkcIH8c=",
+  "dgSpecHash": "b91KiD78tHM=",
   "success": true,
   "projectFilePath": "/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/MovieClientFeaturesApi.Presentation.csproj",
   "expectedPackageFiles": [
@@ -86,6 +86,7 @@
     "/Users/fakhrifarajov/.nuget/packages/minio.aspnetcore/6.0.1/minio.aspnetcore.6.0.1.nupkg.sha512",
     "/Users/fakhrifarajov/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
     "/Users/fakhrifarajov/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/fakhrifarajov/.nuget/packages/qrcoder/1.5.0/qrcoder.1.5.0.nupkg.sha512",
     "/Users/fakhrifarajov/.nuget/packages/scalar.aspnetcore/2.7.2/scalar.aspnetcore.2.7.2.nupkg.sha512",
     "/Users/fakhrifarajov/.nuget/packages/sixlabors.imagesharp/3.1.11/sixlabors.imagesharp.3.1.11.nupkg.sha512",
     "/Users/fakhrifarajov/.nuget/packages/system.buffers/4.6.0/system.buffers.4.6.0.nupkg.sha512",
@@ -124,5 +125,18 @@
     "/Users/fakhrifarajov/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/fakhrifarajov/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "message": "MovieClientFeaturesApi.Application depends on QRCoder (>= 1.4.4) but QRCoder 1.4.4 was not found. QRCoder 1.5.0 was resolved instead.",
+      "projectPath": "/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/MovieClientFeaturesApi.Presentation.csproj",
+      "warningLevel": 1,
+      "filePath": "/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Presentation/MovieClientFeaturesApi.Presentation.csproj",
+      "libraryId": "QRCoder",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

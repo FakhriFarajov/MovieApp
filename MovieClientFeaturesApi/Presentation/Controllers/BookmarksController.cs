@@ -1,11 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using MovieClientFeaturesApi.Application.Services.Client.Interfaces;
-using MovieClientFeaturesApi.Core.DTOs.WatchlistDtos.Request;
+using MovieClientFeaturesApi.Core.DTOs.WatchlistDtos.Response;
 
 namespace MovieClientFeaturesApi.Presentation.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = "ClientPolicy")]
 public class BookmarksController : ControllerBase
 {
     private readonly IBookmarkService _bookmarkService;
@@ -15,53 +18,46 @@ public class BookmarksController : ControllerBase
         _bookmarkService = bookmarkService;
     }
 
-    // POST: accept typed DTO with ClientId
-    [HttpPost]
-    public async Task<IActionResult> Add([FromBody] BookmarkCreateRequestDTO? dto)
+    private string GetClientIdFromClaims()
     {
-        // Simple validation: ensure body was provided and required fields are present
-        if (dto == null)
-        {
-            var errors = new Dictionary<string, string[]>
-            {
-                ["$"] = new[] { "The request body is required and must be valid JSON." },
-                ["dto"] = new[] { "The dto field is required." }
-            };
-            return BadRequest(new { isSuccess = false, message = "Validation failed", data = errors });
-        }
-
-        if (string.IsNullOrWhiteSpace(dto.ClientId) || string.IsNullOrWhiteSpace(dto.MovieId))
-        {
-            var errors = new Dictionary<string, string[]> { ["movieId"] = new[] { "MovieId and ClientId are required." } };
-            return BadRequest(new { isSuccess = false, message = "Validation failed", data = errors });
-        }
-
-        try
-        {
-            var res = await _bookmarkService.AddAsync(dto.ClientId, dto);
-            return CreatedAtAction(nameof(GetAll), new { id = res.Id }, res);
-        }
-        catch (KeyNotFoundException knf)
-        {
-            return NotFound(new { isSuccess = false, message = knf.Message });
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(new { isSuccess = false, message = ex.Message });
-        }
+        var id = User?.FindFirst("client_profile_id")?.Value;
+        if (string.IsNullOrWhiteSpace(id)) throw new InvalidOperationException("client_profile_id claim not found in token");
+        return id;
     }
 
-    [HttpDelete("{clientId}/{id}")]
-    public async Task<IActionResult> Remove(string clientId, string id)
+    // POST: add bookmark (movieId in body, clientId from token)
+    [HttpPost("add/{movieId}")]
+    public async Task<IActionResult> Add(string movieId)
     {
+        if (string.IsNullOrWhiteSpace(movieId))
+        {
+            return Ok(new { isSuccess = false, message = "Validation failed" });
+        }
+        var clientId = GetClientIdFromClaims();
+        var success = await _bookmarkService.AddAsync(clientId, movieId);
+        if (success)
+            return Ok(new { isSuccess = true });
+        else
+            return Ok(new { isSuccess = false, message = "Failed to add bookmark" });
+    }
+
+    // DELETE: bookmark by id (clientId from token)
+    [HttpDelete("remove/{id}")]
+    public async Task<IActionResult> Remove(string id)
+    {
+        if(string.IsNullOrWhiteSpace(id))
+            return Ok(new { isSuccess = false, message = "Validation failed" });
+        var clientId = GetClientIdFromClaims();
         var ok = await _bookmarkService.RemoveAsync(clientId, id);
         if (!ok) return NotFound();
-        return NoContent();
+        return Ok(new { isSuccess = true });
     }
 
-    [HttpGet("{clientId}")]
-    public async Task<IActionResult> GetAll(string clientId)
+    // GET: list bookmarks for client from token
+    [HttpGet("get")]
+    public async Task<IActionResult> GetAll()
     {
+        var clientId = GetClientIdFromClaims();
         var list = await _bookmarkService.GetForClientAsync(clientId);
         return Ok(list);
     }

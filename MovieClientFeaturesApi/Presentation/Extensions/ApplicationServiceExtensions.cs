@@ -35,13 +35,19 @@ public static class ApplicationServiceExtensions
         // Admin features: register genre and movie services
         // Image service
         services.AddScoped<MovieClientFeaturesApi.Application.Services.Interfaces.IImageService, MovieClientFeaturesApi.Application.Services.Classes.MinioImageService>();
-        // Theatres & Halls
         // Movie client service
         services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.IMovieService, MovieClientFeaturesApi.Application.Services.Client.Classes.MovieService>();
+        // Ensure genre and theatre services are registered for controllers
+        services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.IGenreService, MovieClientFeaturesApi.Application.Services.Client.Classes.GenreService>();
+        services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.ITheatreService, MovieClientFeaturesApi.Application.Services.Client.Classes.TheatreService>();
         // Bookmark / watchlist service
         services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.IBookmarkService, MovieClientFeaturesApi.Application.Services.Client.Classes.BookmarkService>();
         // Profile service
         services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.IProfileService, MovieClientFeaturesApi.Application.Services.Client.Classes.ProfileService>();
+        // Booking service
+        services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.IBookingService, MovieClientFeaturesApi.Application.Services.Client.Classes.BookingService>();
+        // ShowTime service
+        services.AddScoped<MovieClientFeaturesApi.Application.Services.Client.Interfaces.IShowTimeService, MovieClientFeaturesApi.Application.Services.Client.Classes.ShowTimeService>();
 
         // LibreTranslate service (HttpClient)
         services.AddHttpClient<MovieClientFeaturesApi.Application.Services.Interfaces.ILibreTranslateService, MovieClientFeaturesApi.Application.Services.Classes.LibreTranslateService>(client =>

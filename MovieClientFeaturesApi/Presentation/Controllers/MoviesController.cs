@@ -8,54 +8,44 @@ namespace MovieClientFeaturesApi.Presentation.Controllers;
 [Produces("application/json")]
 public class MoviesController : ControllerBase
 {
-    private readonly IMovieService _service;
+    private readonly IMovieService _movieService;
 
     public MoviesController(IMovieService service)
     {
-        _service = service;
+        _movieService = service;
     }
 
-    private static string? NormalizeParam(string? v)
+    // Read client id from access token claims when available; return null if unauthenticated
+    private string? GetClientIdFromClaims()
     {
-        if (string.IsNullOrWhiteSpace(v)) return null;
-        var t = v.Trim();
-        if (string.Equals(t, "null", StringComparison.OrdinalIgnoreCase) || string.Equals(t, "undefined", StringComparison.OrdinalIgnoreCase)) return null;
-        return t;
+        var user = User;
+        if (user?.Identity?.IsAuthenticated != true) return null;
+        var id = user.FindFirst("client_profile_id")?.Value;
+        return string.IsNullOrWhiteSpace(id) ? null : id;
     }
 
-    [HttpGet("popular")]
-    public async Task<IActionResult> GetPopular([FromQuery] string? lang, [FromQuery] int page = 1, [FromQuery] int pageSize = 20, [FromQuery] string? genreId = null, [FromQuery] string? clientId = null)
+    [HttpGet("getPopular")]
+    public async Task<IActionResult> GetPopular([FromQuery] string? lang, [FromQuery] int page = 1, [FromQuery] int pageSize = 20, [FromQuery] string? genreId = null)
     {
-        var langSan = NormalizeParam(lang);
-        var genreSan = NormalizeParam(genreId);
-        var paged = await _service.GetPopularAsync(page, pageSize, langSan, genreSan, clientId);
+        var clientId = GetClientIdFromClaims();
+        var paged = await _movieService.GetPopularAsync(page, pageSize, lang, genreId, clientId);
         return Ok(paged);
     }
 
-    [HttpGet("search")]
-    public async Task<IActionResult> Search([FromQuery] string? lang, [FromQuery] int page = 1, [FromQuery] int pageSize = 20, [FromQuery] string? query = null, [FromQuery] string? genreId = null, [FromQuery] string? clientId = null)
+    [HttpGet("searchByNameOrGenre")]
+    public async Task<IActionResult> Search([FromQuery] string? lang, [FromQuery] int page = 1, [FromQuery] int pageSize = 20, [FromQuery] string? query = null, [FromQuery] string? genreId = null)
     {
-        var langSan = NormalizeParam(lang);
-        var querySan = NormalizeParam(query);
-        var genreSan = NormalizeParam(genreId);
-        var paged = await _service.SearchAsync(page, pageSize, langSan, querySan, genreSan, clientId);
+        var clientId = GetClientIdFromClaims();
+        var paged = await _movieService.SearchAsync(page, pageSize, lang, query, genreId, clientId);
         return Ok(paged);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> Get(string id, [FromQuery] string? lang, [FromQuery] string? clientId = null)
+    [HttpGet("getDetails/{id}")]
+    public async Task<IActionResult> Get(string id, [FromQuery] string? lang)
     {
-        var langSan = NormalizeParam(lang);
-        var m = await _service.GetByIdAsync(id, langSan, clientId);
+        var clientId = GetClientIdFromClaims();
+        var m = await _movieService.GetByIdAsync(id, lang, clientId);
         if (m == null) return NotFound();
         return Ok(m);
-    }
-
-    [HttpGet("{id}/theatres")]
-    public async Task<IActionResult> GetTheatres(string id, [FromQuery] string? lang)
-    {
-        var langSan = NormalizeParam(lang);
-        var t = await _service.GetTheatresForMovieAsync(id, langSan);
-        return Ok(t);
     }
 }

@@ -60,14 +60,45 @@ public class MinioImageService : IImageService
         }
     }
 
-    public async Task<string> GetImageUrlAsync(string objectName, int expirySeconds = 3600)
+    public async Task<string> GetImageUrlAsync(string objectName, int expirySeconds = 3600, string? bucketName = null)
     {
+        var targetBucket = bucketName ?? _bucketName;
         var getUrl = await _minioClient.PresignedGetObjectAsync(
             new PresignedGetObjectArgs()
-                .WithBucket(_bucketName)
+                .WithBucket(targetBucket)
                 .WithObject(objectName)
                 .WithExpiry(expirySeconds)
         );
         return getUrl;
+    }
+
+    public async Task<TypedResult<object>> UploadBytesAsync(byte[] data, string objectName, string contentType = "image/png", string? bucketName = null)
+    {
+        try
+        {
+            var targetBucket = bucketName ?? _bucketName;
+            var beArgs = new BucketExistsArgs().WithBucket(targetBucket);
+            bool found = await _minioClient.BucketExistsAsync(beArgs);
+            if (!found)
+            {
+                var mbArgs = new MakeBucketArgs().WithBucket(targetBucket);
+                await _minioClient.MakeBucketAsync(mbArgs);
+            }
+
+            using var ms = new MemoryStream(data);
+            var putArgs = new PutObjectArgs()
+                .WithBucket(targetBucket)
+                .WithObject(objectName)
+                .WithStreamData(ms)
+                .WithObjectSize(ms.Length)
+                .WithContentType(contentType);
+
+            await _minioClient.PutObjectAsync(putArgs);
+            return TypedResult<object>.Success(new { ObjectName = objectName }, "Bytes uploaded successfully");
+        }
+        catch (Exception ex)
+        {
+            return TypedResult<object>.Error($"Bytes upload failed: {ex.Message}", 500);
+        }
     }
 }

@@ -15,3 +15,4 @@
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Application/bin/Debug/net9.0/MovieClientFeaturesApi.Infrastructure.pdb
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Application/obj/Debug/net9.0/MovieClientFeaturesApi.Application.csproj.AssemblyReference.cache
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Application/obj/Debug/net9.0/MovieCli.A68B016A.Up2Date
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Application/obj/Debug/net9.0/MovieClientFeaturesApi.Application.sourcelink.json

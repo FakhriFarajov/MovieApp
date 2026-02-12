@@ -1548,6 +1548,15 @@
           }
         }
       },
+      "QRCoder/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {}
+        }
+      },
       "SixLabors.ImageSharp/3.1.11": {
         "type": "package",
         "compile": {
@@ -4862,6 +4871,27 @@
         "packageIcon.png"
       ]
     },
+    "QRCoder/1.5.0": {
+      "sha512": "z1xaJ1BsYdSstpuKWgT3ND9Ryt7gd9RdBvcLemP3Dz8CrPPeuyhn2KlD8J1x1V4OhuAsAFcZRmxB7vte7CQkfQ==",
+      "type": "package",
+      "path": "qrcoder/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/QRCoder.dll",
+        "lib/net40/QRCoder.dll",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/net6.0-windows7.0/QRCoder.dll",
+        "lib/net6.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.5.0.nupkg.sha512",
+        "qrcoder.nuspec"
+      ]
+    },
     "SixLabors.ImageSharp/3.1.11": {
       "sha512": "JfPLyigLthuE50yi6tMt7Amrenr/fA31t2CvJyhy/kQmfulIBAqo5T/YFUSRHtuYPXRSaUHygFeh6Qd933EoSw==",
       "type": "package",
@@ -6174,6 +6204,7 @@
       "Minio.AspNetCore >= 6.0.1",
       "MovieClientFeaturesApi.Core >= 1.0.0",
       "MovieClientFeaturesApi.Infrastructure >= 1.0.0",
+      "QRCoder >= 1.4.4",
       "SixLabors.ImageSharp >= 3.1.11"
     ]
   },
@@ -6251,6 +6282,10 @@
             "target": "Package",
             "version": "[6.0.1, )"
           },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.4.4, )"
+          },
           "SixLabors.ImageSharp": {
             "target": "Package",
             "version": "[3.1.11, )"
@@ -6275,5 +6310,17 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "MovieClientFeaturesApi.Application depends on QRCoder (>= 1.4.4) but QRCoder 1.4.4 was not found. QRCoder 1.5.0 was resolved instead.",
+      "libraryId": "QRCoder",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

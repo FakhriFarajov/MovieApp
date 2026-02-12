@@ -10,3 +10,4 @@
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.pdb
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/ref/MovieClientFeaturesApi.Core.dll
 /Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.csproj.AssemblyReference.cache
+/Users/fakhrifarajov/Desktop/MovieApp/MovieClientFeaturesApi/Core/obj/Debug/net9.0/MovieClientFeaturesApi.Core.sourcelink.json

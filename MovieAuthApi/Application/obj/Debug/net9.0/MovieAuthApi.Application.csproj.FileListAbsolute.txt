@@ -15,3 +15,4 @@
 /Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/refint/MovieAuthApi.Application.dll
 /Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.pdb
 /Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/ref/MovieAuthApi.Application.dll
+/Users/fakhrifarajov/Desktop/MovieApp/MovieAuthApi/Application/obj/Debug/net9.0/MovieAuthApi.Application.sourcelink.json

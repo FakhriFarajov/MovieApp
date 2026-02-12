@@ -8,24 +8,28 @@ namespace MovieClientFeaturesApi.Presentation.Controllers;
 [Produces("application/json")]
 public class GenresController : ControllerBase
 {
+    private readonly IGenreService _genreService;
     private readonly IMovieService _movieService;
 
-    public GenresController(IMovieService movieService)
+    public GenresController(IGenreService genreService, IMovieService movieService)
     {
+        _genreService = genreService;
         _movieService = movieService;
     }
 
-    [HttpGet]
+    [HttpGet("getAllGenres")]
     public async Task<IActionResult> GetAll([FromQuery] string? lang = null)
     {
-        var genres = await _movieService.GetAllGenresAsync(lang);
+        var genres = await _genreService.GetAllGenresAsync(lang);
         return Ok(genres);
     }
 
-    [HttpGet("{id}/movies")]
-    public async Task<IActionResult> GetMoviesByGenre(string id, [FromQuery] string? lang = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
-    {
-        var paged = await _movieService.SearchAsync(page, pageSize, lang, null, id);
-        return Ok(paged);
-    }
+    //
+    // //Must be in Movie Controller because it needs to return paged movies, and the logic is in MovieService
+    // [HttpGet("getMovieByGenreId/{id}/")]
+    // public async Task<IActionResult> GetMoviesByGenre(string id, [FromQuery] string? lang = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    // {
+    //     var paged = await _movieService.SearchAsync(page, pageSize, lang, null, id);
+    //     return Ok(paged);
+    // }
 }

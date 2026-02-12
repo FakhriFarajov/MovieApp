@@ -8,30 +8,31 @@ namespace MovieClientFeaturesApi.Presentation.Controllers;
 [Produces("application/json")]
 public class ShowTimesController : ControllerBase
 {
-    private readonly IMovieService _movieService;
-    public ShowTimesController(IMovieService movieService)
+    private readonly IShowTimeService _showTimeService;
+    public ShowTimesController(IShowTimeService showTimeService)
     {
-        _movieService = movieService;
+        _showTimeService = showTimeService;
     }
 
     [HttpGet("theatre/{theatreId}")]
     public async Task<IActionResult> GetByTheatre(string theatreId)
     {
-        var items = await _movieService.GetShowTimesForTheatreAsync(theatreId);
+        var items = await _showTimeService.GetShowTimesForTheatreAsync(theatreId);
         return Ok(items);
     }
-
-    [HttpGet("hall/{hallId}")]
-    public async Task<IActionResult> GetByHall(string hallId)
-    {
-        var items = await _movieService.GetShowTimesForHallAsync(hallId);
-        return Ok(items);
-    }
+    
 
     [HttpGet("movie/{movieId}")]
     public async Task<IActionResult> GetByMovie(string movieId)
     {
-        var items = await _movieService.GetShowTimesForMovieAsync(movieId);
+        var items = await _showTimeService.GetShowTimesForMovieAsync(movieId);
+        return Ok(items);
+    }
+
+    [HttpGet("{showTimeId}/seats")]
+    public async Task<IActionResult> GetSeatsForShow(string showTimeId)
+    {
+        var items = await _showTimeService.GetSeatAvailabilityForShowAsync(showTimeId);
         return Ok(items);
     }
 }

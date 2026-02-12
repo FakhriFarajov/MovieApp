@@ -87,7 +87,7 @@ public class TokenManager
             issuer: issuer,
             audience: audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(3),
+            expires: DateTime.UtcNow.AddMinutes(30),
             signingCredentials: creds);
 
         return await Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
